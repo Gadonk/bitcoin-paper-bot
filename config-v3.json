@@ -1,0 +1,35 @@
+{
+  "strategy": "ai_v3",
+  "product": "BTC-EUR",
+  "initial_cash_dkk": 500,
+  "dkk_per_eur": 7.46,
+  "fast_window": 12,
+  "slow_window": 26,
+  "allocation": 0.1,
+  "fee_rate": 0.006,
+  "slippage": 0.001,
+  "stop_loss": 0.02,
+  "take_profit": 0.04,
+  "max_drawdown": 0.15,
+  "poll_seconds": 60,
+  "ai": {
+    "url": "http://ollama:11434",
+    "model": "qwen3.5:4b",
+    "num_ctx": 4096,
+    "timeout_seconds": 45,
+    "max_age_seconds": 180,
+    "max_price_drift": 0.0015
+  },
+  "ai_risk": {
+    "min_allocation": 0.05,
+    "max_allocation": 0.3,
+    "min_stop": 0.005,
+    "max_stop": 0.06,
+    "max_target": 0.2,
+    "max_trade_risk": 0.02,
+    "max_spread": 0.003,
+    "min_net_reward_risk": 1.0,
+    "cooldown_seconds": 900,
+    "max_hold_seconds": 86400
+  }
+}

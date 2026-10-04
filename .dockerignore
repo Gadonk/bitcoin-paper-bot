@@ -1,0 +1,16 @@
+*
+!bot.py
+!dashboard.py
+!strategy.py
+!ai_review.py
+!ai_settings.py
+!config-v3.json
+!backtest.py
+!config-v2.json
+!web/
+!web/index.html
+!config.json
+!tests/
+!tests/*.py
+
+!ai_smoke.py

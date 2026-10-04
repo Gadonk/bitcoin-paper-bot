@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Container version="2">
+  <Name>bitcoin-paper-bot-v3</Name>
+  <Repository>ghcr.io/gadonk/bitcoin-paper-bot:v3</Repository>
+  <Registry>https://github.com/Gadonk/bitcoin-paper-bot/pkgs/container/bitcoin-paper-bot</Registry>
+  <Network>bridge</Network>
+  <MyIP />
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Overview>Bitcoin AI paper-bot v3: connects to your existing Ollama server. Configure enable, URL, model and optional API key directly in the dashboard. No separate AI container or admin page. 500 simulated DKK.</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=45 --user=99:100 --read-only --cap-drop=ALL --security-opt=no-new-privileges:true --pids-limit=64 --memory=256m --cpus=0.5 --log-driver=json-file --log-opt=max-size=10m --log-opt=max-file=3</ExtraParams>
+  <PostArgs>paper --config /config/config.json --state /data/paper.json</PostArgs>
+  <Config Name="Webinterface" Target="8080" Default="8090" Mode="tcp" Description="V3-dashboard. V1/v2 bruger andre porte." Type="Port" Display="always" Required="true" Mask="false">8090</Config>
+  <Config Name="Konfiguration" Target="/config" Default="/mnt/user/appdata/bitcoin-paper-bot-v3/config" Mode="ro" Description="V3 config.json; AI-baseadresse og model står her. Ændret konfiguration kræver ny session." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/bitcoin-paper-bot-v3/config</Config>
+  <Config Name="Handelsdata" Target="/data" Default="/mnt/user/appdata/bitcoin-paper-bot-v3/data" Mode="rw" Description="Egen saldo, handelslog og AI-historik. Må ikke deles med andre bots." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/bitcoin-paper-bot-v3/data</Config>
+  <Config Name="Tidszone" Target="TZ" Default="Europe/Copenhagen" Mode="" Type="Variable" Display="advanced" Required="true" Mask="false">Europe/Copenhagen</Config>
+  <Config Name="Enable AI initially" Target="AI_ENABLED" Default="false" Mode="" Description="Saved dashboard preferences take priority after first save." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="Ollama server URL" Target="AI_BASE_URL" Default="http://ollama:11434" Mode="" Description="Use server LAN IP:port or Docker name on a shared custom network." Type="Variable" Display="always" Required="false" Mask="false">http://ollama:11434</Config>
+  <Config Name="AI model" Target="AI_MODEL" Default="qwen3.5:4b" Mode="" Description="Model already installed in your Ollama container." Type="Variable" Display="always" Required="false" Mask="false">qwen3.5:4b</Config>
+  <Config Name="API key (optional)" Target="AI_API_KEY" Default="" Mode="" Description="Leave blank for standard local Ollama; may be used for an authenticated proxy." Type="Variable" Display="always" Required="false" Mask="true" />
+</Container>

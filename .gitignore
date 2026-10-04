@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+/data/
+/appdata/
+/runs/
+*.csv
+*.zip
+paper.json
+ai-settings.json
